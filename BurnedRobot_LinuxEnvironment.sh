@@ -14,6 +14,7 @@
 #   2013/07/12  RobotFlying  Add wget,git,goagent,curl
 #   2013/07/14  RobotFlying  Use functions to simplify this code
 #   2013/08/05  RobotFlying  Add update sources and google_chrome installation
+#                            Add goagent
 #
 #############################################################################################
 
@@ -22,8 +23,7 @@
 #Check the release virsion of linux
 function check_version()
 {
-    if  cat /proc/version | grep -q "Red Hat" ; then
-        echo System is Red Hat!
+    if  cat /proc/version | grep -q "Red Hat" ; then echo System is Red Hat!
         INSTALL='yum install'
         SYSTEM='Red Hat'
     elif cat /proc/version | grep -q "Ubuntu" ; then
@@ -63,6 +63,16 @@ function install_expect()
 {
     echo Here are installing expect...
     sudo $INSTALL expect
+    echo
+}
+
+
+function init()
+{
+    check_version
+
+    AUTOINSTALL="./auto_install.sh"
+
     echo '#! /usr/bin/expect' > $AUTOINSTALL
     echo "spawn sudo $INSTALL " '[lindex $argv 0]' >> $AUTOINSTALL
     echo 'expect "password"' >> $AUTOINSTALL
@@ -71,7 +81,23 @@ function install_expect()
     echo 'send "y\r"' >> $AUTOINSTALL
     echo 'interact' >> $AUTOINSTALL
     chmod +x $AUTOINSTALL
-    echo
+
+    #store the password
+    echo -e "Please input password:"
+    stty -echo
+    read PASSWD
+
+    install_expect
+}
+
+
+function clean
+{
+    #make a clean
+    rm $AUTOINSTALL
+    clear
+    echo Installation Complete!
+    stty echo
 }
 
 
@@ -118,23 +144,54 @@ function install_google_chrome()
 }
 
 
+#Here installs goagent 
+function install_goagent()
+{
+    if [ "$SYSTEM" == 'Ubuntu' ];
+        then $AUTOINSTALL python-dev $PASSWD
+        $AUTOINSTALL libssl-dev $PASSWD
+    elif [ "$SYSTEM" == 'Red Hat' ];
+        then $AUTOINSTALL python-devel $PASSWD
+        $AUTOINSTALL libssl-devel $PASSWD
+    fi
+
+    NOW_DIR=$PWD
+
+    # install gevent
+    curl -L -O https://github.com/python-greenlet/greenlet/archive/0.4.0.tar.gz && tar xvzpf 0.4.0.tar.gz && cd greenlet-0.4.0 && sudo python setup.py install
+
+    curl -L -O https://github.com/downloads/surfly/gevent/gevent-1.0rc2.tar.gz && tar xvzpf gevent-1.0rc2.tar.gz && cd gevent-1.0rc2 && sudo python setup.py install
+
+    #install openssl
+    wget http://www.openssl.org/source/openssl-1.0.1c.tar.gz
+    tar zxvf openssl-1.0.1c.tar.gz
+    cd openssl-1.0.1c
+#设定Openssl 安装，( --prefix )参数为欲安装之目录，也就是安装后的档案会出现在该目录下
+    ./config --prefix=/root/openssl 
+    make && make install
+
+    #install pyopenssl
+    wget http://pypi.python.org/packages/source/p/pyOpenSSL/pyOpenSSL-0.13.tar.gz && tar zxvf pyOpenSSL-0.13.tar.gz && cd pyOpenSSL-0.13 && sudo python setup.py install
+    
+    cd ~/Desktop
+    git clone https://github.com/goagent/goagent.git
+
+    cd $NOW_DIR
+    sudo rm  -f 0.4.0.tar.gz gevent-1.0rc2.tar.gz -r gevent-1.0rc2 -r greenlet-0.4.0
+    sudo rm -f openssl-1.0.1c.tar.gz pyOpenSSL-0.13.tar.gz -r openssl-1.0.1c -r pyOpenSSL-0.13
+}
+
+
 #main function
 function main()
 {
-    check_version
-    #auto install shell script
-    AUTOINSTALL="./auto_install.sh"
+
+    init
 
     #common_installation array
     common_array=( "wget" "guake" "ctags" "git" "gcc" "curl" "mysql-server" "unrar" "g++" "cmake" )
     common_array_len=${#common_array[@]}
 
-    #store the password
-    echo -e "Please input password:"
-    stty -echo
-    read PASSWD
-
-    install_expect
     install_vim
     install_ssh
 
@@ -148,12 +205,21 @@ function main()
 
     #Here installs google-chrome
     install_google_chrome
-    #make a clean
-    rm $AUTOINSTALL
-    clear
-    echo Installation Complete!
-    stty echo
+   
+    #Here installs goagent
+    install_goagent
+
+    clean
+}
+
+
+function test()
+{
+    init
+    install_goagent
+    clean
 }
 
 
 main
+#test
