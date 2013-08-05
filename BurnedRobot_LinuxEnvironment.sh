@@ -2,15 +2,18 @@
 #
 #   This script is used to initialize my linux work environment automately. All the setting 
 # is just for my need.
-#   Version:1.0
-#   Author: RobotFlying
-#   Email:  robotflying777@gmail.com
+#
+#   Version:    1.0
+#   Author:     RobotFlying
+#   Email:      robotflying777@gmail.com
 #   Copyright:  RobotFlying
+#
 #   History:    
 #   2013/06/03  RobotFlying  First release
 #   2013/06/15  RobotFlying  Use 'expect' tool to implement AUTOINSTALLation
 #   2013/07/12  RobotFlying  Add wget,git,goagent,curl
 #   2013/07/14  RobotFlying  Use functions to simplify this code
+#   2013/08/05  RobotFlying  Add update sources and google_chrome installation
 #
 #############################################################################################
 
@@ -30,6 +33,20 @@ function check_version()
     fi
 }
 
+
+#update software sources
+function update_sources()
+{
+    echo "Please input software sources[163 or sohu or bit]"
+    read SOURCE
+
+    if [ "$SYSTEM" == 'Ubuntu' ];
+        then ./update_ubuntu_sources.sh $SOURCE
+    elif [ "$SYSTEM" == 'Red Hat' ];
+        then ./update_red_hat_sources.sh $SOURCE
+    fi
+
+}
 #function common_installation 
 #mostly app can be installed by this function
 function common_installation()
@@ -57,6 +74,7 @@ function install_expect()
     echo
 }
 
+
 #Here installs my favourite editor - vim editor
 function install_vim()
 {
@@ -77,6 +95,7 @@ function install_vim()
     echo
 }
 
+
 #Here installs openssh
 function install_ssh()
 {
@@ -88,6 +107,16 @@ function install_ssh()
     fi
     echo
 }
+
+
+#Here installs google-chrome
+function install_google_chrome()
+{
+    echo Here are installing google-chrome
+    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+    $AUTOINSTALL google-chrome-stable $PASSWD
+}
+
 
 #main function
 function main()
@@ -117,11 +146,14 @@ function main()
         index=` expr $index + 1`
     done
 
+    #Here installs google-chrome
+    install_google_chrome
     #make a clean
     rm $AUTOINSTALL
     clear
     echo Installation Complete!
     stty echo
 }
+
 
 main
