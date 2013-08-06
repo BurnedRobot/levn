@@ -159,6 +159,16 @@ function set_bit_sources()
 }
 
 
+function set_google_sources()
+{
+    echo '[google-chrome]' > google.repo
+    echo 'name=google-chrome - 64-bit' >> google.repo
+    echo 'baseurl=http://dl.google.com/linux/chrome/rpm/stable/x86_64' >> google.repo
+    echo 'enabled=1' >> google.repo
+    echo 'gpgcheck=1' >> google.repo
+    echo 'gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub' >> google.repo
+}
+
 
 function main()
 {
@@ -170,6 +180,8 @@ function main()
         "bit")
             set_bit_sources;;
     esac
+
+    set_google_sources
 
     CURRENT_DIR=$PWD
     cd /etc/yum.repos.d

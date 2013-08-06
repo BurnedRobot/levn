@@ -14,7 +14,7 @@
 #   2013/07/12  RobotFlying  Add wget,git,goagent,curl
 #   2013/07/14  RobotFlying  Use functions to simplify this code
 #   2013/08/05  RobotFlying  Add update sources and google_chrome installation
-#                            Add goagent
+#                            Add goagent, chromium
 #
 #############################################################################################
 
@@ -171,11 +171,25 @@ function install_unrar()
 #Here installs google-chrome
 function install_google_chrome()
 {
-    echo Here are installing google-chrome
+    echo Here are installing google-chrome...
     wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
     $AUTOINSTALL google-chrome-stable $PASSWD
 }
 
+
+#Here installs chromium
+function install_chromium
+{
+    echo Here are installing chromium...
+
+    if [ "$SYSTEM" == 'Red Hat' ];
+        then sudo yum-config-manager --add-repo=http://repos.fedorapeople.org/repos/spot/chromium-stable/fedora-chromium-stable.repo
+        sudo yum install chromium -y
+    elif [ "$SYSTEM" == 'Ubuntu' ];
+        then $AUTOINSTALL chromium $PASSWD
+    fi
+
+}
 
 #Here installs goagent 
 function install_goagent()
@@ -185,7 +199,7 @@ function install_goagent()
         $AUTOINSTALL libssl-dev $PASSWD
     elif [ "$SYSTEM" == 'Red Hat' ];
         then $AUTOINSTALL python-devel $PASSWD
-        $AUTOINSTALL libssl-devel $PASSWD
+        $AUTOINSTALL openssl-devel $PASSWD
     fi
 
     NOW_DIR=$PWD
@@ -240,9 +254,10 @@ function main()
 
     #Here installs google-chrome
     #install_google_chrome
+    install_chromium
    
     #Here installs goagent
-    #install_goagent
+    install_goagent
 
     clean
 }
