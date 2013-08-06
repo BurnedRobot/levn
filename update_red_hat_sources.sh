@@ -171,6 +171,13 @@ function main()
             set_bit_sources;;
     esac
 
-    sudo mv /etc/yum.repos.d/*.repo /etc/yum.repos.d/*.repo_bak
+    CURREND_DIR=$CWD
+    cd /etc/yum.repos.d
+    mv *.repo *.repo_bak
+
+    cd $CURREND_DIR
+    cp *.repo /etc/yum.repos.d
     sudo yum makecache
 }
+
+main $1
