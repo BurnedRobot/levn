@@ -2,7 +2,7 @@
 #
 #   This script is used to initialize my linux work environment automately. All the setting 
 # is just for my need.
-#   This file is used to update unbuntu software sources
+#   This file is used to update ubuntu software sources
 #
 #   Version:    1.0
 #   Author:     RobotFlying
