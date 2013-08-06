@@ -37,6 +37,7 @@ function check_version()
 #update software sources
 function update_sources()
 {
+    echo "Here will begin update software sources!"
     echo "Please input software sources[163 or sohu or bit]"
     read SOURCE
 
@@ -82,10 +83,14 @@ function init()
     echo 'interact' >> $AUTOINSTALL
     chmod +x $AUTOINSTALL
 
+    update_sources
+
     #store the password
-    echo -e "Please input password:"
+    echo "Installation will begin!"
+    echo -e "Please input password again:"
     stty -echo
     read PASSWD
+
 
     install_expect
 }
@@ -204,10 +209,10 @@ function main()
     done
 
     #Here installs google-chrome
-    install_google_chrome
+    #install_google_chrome
    
     #Here installs goagent
-    install_goagent
+    #install_goagent
 
     clean
 }
