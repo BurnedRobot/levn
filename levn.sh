@@ -186,7 +186,7 @@ function install_chromium
         then sudo yum-config-manager --add-repo=http://repos.fedorapeople.org/repos/spot/chromium-stable/fedora-chromium-stable.repo
         sudo yum install chromium -y
     elif [ "$SYSTEM" == 'Ubuntu' ];
-        then $AUTOINSTALL chromium $PASSWD
+        then $AUTOINSTALL chromium-browser $PASSWD
     fi
 
 }
@@ -257,7 +257,7 @@ function main()
     install_chromium
    
     #Here installs goagent
-    install_goagent
+    #install_goagent
 
     clean
 }
