@@ -87,12 +87,12 @@ function init()
 
     #store the password
     echo "Installation will begin!"
+    install_expect
     echo -e "Please input password again:"
     stty -echo
     read PASSWD
 
 
-    install_expect
 }
 
 
@@ -257,7 +257,7 @@ function main()
     install_chromium
    
     #Here installs goagent
-    #install_goagent
+    install_goagent
 
     clean
 }
