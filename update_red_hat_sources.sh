@@ -5,12 +5,12 @@
 #   This file is used to update fedora software sources
 #
 #   Version:    1.0
-#   Author:     RobotFlying
+#   Author:     BurnedRobot
 #   Email:      robotflying777@gmail.com
-#   Copyright:  RobotFlying
+#   Copyright:  BurnedRobot
 #
 #   History:    
-#   2013/08/06  RobotFlying  First release
+#   2013/08/06  BurnedRobot  First release
 #
 #############################################################################################
 

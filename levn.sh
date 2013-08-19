@@ -4,16 +4,16 @@
 # is just for my need.
 #
 #   Version:    1.0
-#   Author:     RobotFlying
+#   Author:     BurnedRobot
 #   Email:      robotflying777@gmail.com
-#   Copyright:  RobotFlying
+#   Copyright:  BurnedRobot
 #
 #   History:    
-#   2013/06/03  RobotFlying  First release
-#   2013/06/15  RobotFlying  Use 'expect' tool to implement AUTOINSTALLation
-#   2013/07/12  RobotFlying  Add wget,git,goagent,curl
-#   2013/07/14  RobotFlying  Use functions to simplify this code
-#   2013/08/05  RobotFlying  Add update sources and google_chrome installation
+#   2013/06/03  BurnedRobot  First release
+#   2013/06/15  BurnedRobot  Use 'expect' tool to implement AUTOINSTALLation
+#   2013/07/12  BurnedRobot  Add wget,git,goagent,curl
+#   2013/07/14  BurnedRobot  Use functions to simplify this code
+#   2013/08/05  BurnedRobot  Add update sources and google_chrome installation
 #                            Add goagent, chromium
 #
 #############################################################################################
