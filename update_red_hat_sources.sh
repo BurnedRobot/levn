@@ -137,23 +137,23 @@ function set_sohu_sources()
 function set_bit_sources()
 {
 
-    echo '[Release-mirror.bit.edu.cn]' > fedora-bit.repo
+    echo '[Release-mirror.bit.org]' > fedora-bit.repo
     echo 'name=Fedora 19 – x86_64' >> fedora-bit.repo
-    echo 'baseurl=http://mirror.bitunion.edu.cn/fedora/linux/releases/19/Fedora/x86_64/os/' >> fedora-bit.repo
+    echo 'baseurl=http://mirror.bitunion.org/fedora/linux/releases/19/Fedora/x86_64/os/' >> fedora-bit.repo
     echo 'enabled=1' >> fedora-bit.repo
     echo 'gpgcheck=1' >> fedora-bit.repo
     echo 'gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora' >> fedora-bit.repo
     echo ' ' >> fedora-bit.repo
     echo '[Everything-mirror.bit.edu.cn]' >> fedora-bit.repo
     echo 'name=Everything 19 – x86_64' >> fedora-bit.repo
-    echo 'baseurl=http://mirror.bitunion.edu.cn/fedora/linux/releases/19/Everything/x86_64/os/' >> fedora-bit.repo
+    echo 'baseurl=http://mirror.bitunion.org/fedora/linux/releases/19/Everything/x86_64/os/' >> fedora-bit.repo
     echo 'enabled=1' >> fedora-bit.repo
     echo 'gpgcheck=1' >> fedora-bit.repo
     echo 'gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora' >> fedora-bit.repo
      echo ' ' >> fedora-bit.repo
     echo '[updates-mirror.bit.edu.cn]' >> fedora-bit.repo
     echo 'name=Fedora updates' >> fedora-bit.repo
-    echo 'baseurl=http://mirror.bitunion.edu.cn/fedora/linux/updates/19/x86_64/' >> fedora-bit.repo
+    echo 'baseurl=http://mirror.bitunion.org/fedora/linux/updates/19/x86_64/' >> fedora-bit.repo
     echo 'enabled=1' >> fedora-bit.repo
     echo 'gpgcheck=0' >> fedora-bit.repo
 }
