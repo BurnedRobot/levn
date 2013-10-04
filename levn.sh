@@ -15,6 +15,8 @@
 #   2013/07/14  BurnedRobot  Use functions to simplify this code
 #   2013/08/05  BurnedRobot  Add update sources and google_chrome installation
 #                            Add goagent, chromium
+#   2013/10/04  BurnedRobot  Add whether to change software sources or not
+#                            Fix bugs in install_goagent
 #
 #############################################################################################
 
@@ -68,6 +70,7 @@ function install_expect()
 }
 
 
+##################################################################################################################################################
 function init()
 {
     check_version
@@ -117,6 +120,7 @@ function clean
 }
 
 
+##################################################################################################################################################
 #Here installs my favourite editor - vim editor
 function install_vim()
 {
@@ -179,6 +183,7 @@ function install_unrar()
 }
 
 
+##################################################################################################################################################
 #Here installs google-chrome
 function install_google_chrome()
 {
@@ -201,6 +206,22 @@ function install_chromium
     fi
 
 }
+
+
+##################################################################################################################################################
+#We use this function to judge whether the ~/Desktop directory exist or not
+function judge_desktop()
+{
+    if [ -d ~/Desktop ] ;
+        then echo Desktop exist!
+    else
+        echo ~/Desktop dosen\`t exist.
+        echo We create it.
+        cd ~
+        mkdir Desktop
+    fi
+}
+
 
 #Here installs goagent 
 function install_goagent()
@@ -230,6 +251,8 @@ function install_goagent()
 
     #install pyopenssl
     wget http://pypi.python.org/packages/source/p/pyOpenSSL/pyOpenSSL-0.13.tar.gz && tar zxvf pyOpenSSL-0.13.tar.gz && cd pyOpenSSL-0.13 && sudo python setup.py install
+
+    judge_desktop
     
     cd ~/Desktop
     git clone https://github.com/goagent/goagent.git
@@ -240,6 +263,7 @@ function install_goagent()
 }
 
 
+##################################################################################################################################################
 #main function
 function main()
 {
@@ -278,10 +302,11 @@ function main()
 function this_test()
 {
     init
-    #install_goagent
+    install_goagent
     clean
 }
 
 
+##################################################################################################################################################
 main
 #this_test
