@@ -83,7 +83,18 @@ function init()
     echo 'interact' >> $AUTOINSTALL
     chmod +x $AUTOINSTALL
 
-    update_sources
+    echo "If you want to update sources[y/N]?"
+    read SOURCE_CHECK
+
+    if [ "$SOURCE_CHECK" == 'y' ] || [ "$SOURCE_CHECK" == 'Y' ];
+        then update_sources
+    elif [ "$SOURCE_CHECK" == 'n' ] || [ "$SOURCE_CHECK" == 'N' ];
+        then echo Software sources dosen\`t change! 
+    else
+        echo Input Error!
+        echo Exit!
+        exit
+    fi
 
     #store the password
     echo "Installation will begin!"
@@ -236,7 +247,8 @@ function main()
     init
 
     #common_installation array
-    common_array=( "wget" "guake" "ctags" "git" "gcc" "curl" "mysql-server" "cmake" )
+    #common_array=( "wget" "guake" "ctags" "git" "gcc" "curl" "mysql-server" "cmake" )
+    common_array=( "wget" "guake" "ctags" "git" "gcc" "curl" "cmake" )
     common_array_len=${#common_array[@]}
 
     install_vim
@@ -254,22 +266,22 @@ function main()
 
     #Here installs google-chrome
     #install_google_chrome
-    install_chromium
+    #install_chromium
    
     #Here installs goagent
-    install_goagent
+    #install_goagent
 
     clean
 }
 
 
-function test()
+function this_test()
 {
     init
-    install_goagent
+    #install_goagent
     clean
 }
 
 
 main
-#test
+#this_test
