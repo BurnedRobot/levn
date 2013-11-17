@@ -19,60 +19,60 @@
 # write 163 sources into sources.list
 function set_163_sources()
 {
-    echo 'deb http://mirrors.163.com/ubuntu/ raring main restricted universe multiverse' > sources.list
-    echo 'deb http://mirrors.163.com/ubuntu/ raring-security main restricted universe multiverse' >> sources.list
-    echo 'deb http://mirrors.163.com/ubuntu/ raring-updates main restricted universe multiverse' >> sources.list
-    echo 'deb http://mirrors.163.com/ubuntu/ raring-proposed main restricted universe multiverse' >> sources.list
-    echo 'deb http://mirrors.163.com/ubuntu/ raring-backports main restricted universe multiverse' >> sources.list
-    echo 'deb-src http://mirrors.163.com/ubuntu/ raring main restricted universe multiverse' >> sources.list
-    echo 'deb-src http://mirrors.163.com/ubuntu/ raring-security main restricted universe multiverse' >> sources.list
-    echo 'deb-src http://mirrors.163.com/ubuntu/ raring-updates main restricted universe multiverse' >> sources.list
-    echo 'deb-src http://mirrors.163.com/ubuntu/ raring-proposed main restricted universe multiverse' >> sources.list
-    echo 'deb-src http://mirrors.163.com/ubuntu/ raring-backports main restricted universe multiverse' >> sources.list
+    echo 'deb http://mirrors.163.com/ubuntu/ saucy main restricted universe multiverse' > sources.list
+    echo 'deb http://mirrors.163.com/ubuntu/ saucy-security main restricted universe multiverse' >> sources.list
+    echo 'deb http://mirrors.163.com/ubuntu/ saucy-updates main restricted universe multiverse' >> sources.list
+    echo 'deb http://mirrors.163.com/ubuntu/ saucy-proposed main restricted universe multiverse' >> sources.list
+    echo 'deb http://mirrors.163.com/ubuntu/ saucy-backports main restricted universe multiverse' >> sources.list
+    echo 'deb-src http://mirrors.163.com/ubuntu/ saucy main restricted universe multiverse' >> sources.list
+    echo 'deb-src http://mirrors.163.com/ubuntu/ saucy-security main restricted universe multiverse' >> sources.list
+    echo 'deb-src http://mirrors.163.com/ubuntu/ saucy-updates main restricted universe multiverse' >> sources.list
+    echo 'deb-src http://mirrors.163.com/ubuntu/ saucy-proposed main restricted universe multiverse' >> sources.list
+    echo 'deb-src http://mirrors.163.com/ubuntu/ saucy-backports main restricted universe multiverse' >> sources.list
 }
 
 
 # write sohu sources into sources.list
 function set_sohu_sources()
 {
-    echo 'deb http://mirrors.sohu.com/ubuntu/ raring main restricted universe multiverse' > sources.list
-    echo 'deb http://mirrors.sohu.com/ubuntu/ raring-security main restricted universe multiverse' >> sources.list
-    echo 'deb http://mirrors.sohu.com/ubuntu/ raring-updates main restricted universe multiverse' >> sources.list
-    echo 'deb http://mirrors.sohu.com/ubuntu/ raring-proposed main restricted universe multiverse' >> sources.list
-    echo 'deb http://mirrors.sohu.com/ubuntu/ raring-backports main restricted universe multiverse' >> sources.list
-    echo 'deb-src http://mirrors.sohu.com/ubuntu/ raring main restricted universe multiverse' >> sources.list
-    echo 'deb-src http://mirrors.sohu.com/ubuntu/ raring-security main restricted universe multiverse' >> sources.list
-    echo 'deb-src http://mirrors.sohu.com/ubuntu/ raring-updates main restricted universe multiverse' >> sources.list
-    echo 'deb-src http://mirrors.sohu.com/ubuntu/ raring-proposed main restricted universe multiverse' >> sources.list
-    echo 'deb-src http://mirrors.sohu.com/ubuntu/ raring-backports main restricted universe multiverse' >> sources.list
+    echo 'deb http://mirrors.sohu.com/ubuntu/ saucy main restricted universe multiverse' > sources.list
+    echo 'deb http://mirrors.sohu.com/ubuntu/ saucy-security main restricted universe multiverse' >> sources.list
+    echo 'deb http://mirrors.sohu.com/ubuntu/ saucy-updates main restricted universe multiverse' >> sources.list
+    echo 'deb http://mirrors.sohu.com/ubuntu/ saucy-proposed main restricted universe multiverse' >> sources.list
+    echo 'deb http://mirrors.sohu.com/ubuntu/ saucy-backports main restricted universe multiverse' >> sources.list
+    echo 'deb-src http://mirrors.sohu.com/ubuntu/ saucy main restricted universe multiverse' >> sources.list
+    echo 'deb-src http://mirrors.sohu.com/ubuntu/ saucy-security main restricted universe multiverse' >> sources.list
+    echo 'deb-src http://mirrors.sohu.com/ubuntu/ saucy-updates main restricted universe multiverse' >> sources.list
+    echo 'deb-src http://mirrors.sohu.com/ubuntu/ saucy-proposed main restricted universe multiverse' >> sources.list
+    echo 'deb-src http://mirrors.sohu.com/ubuntu/ saucy-backports main restricted universe multiverse' >> sources.list
 }
 
 
 # write bit sources into sources.list
 function set_bit_sources()
 {
-    echo 'deb http://mirror.bit.edu.cn/ubuntu/ raring main restricted universe multiverse' >> sources.list
-    echo 'deb http://mirror.bit.edu.cn/ubuntu/ raring-security main restricted universe multiverse' >> sources.list
-    echo 'deb http://mirror.bit.edu.cn/ubuntu/ raring-updates main restricted universe multiverse' >> sources.list
-    echo 'deb http://mirror.bit.edu.cn/ubuntu/ raring-backports main restricted universe multiverse' >> sources.list
-    echo 'deb http://mirror.bit.edu.cn/ubuntu/ raring-proposed main restricted universe multiverse' >> sources.list
-    echo 'deb-src http://mirror.bit.edu.cn/ubuntu/ raring main restricted universe multiverse' >> sources.list
-    echo 'deb-src http://mirror.bit.edu.cn/ubuntu/ raring-security main restricted universe multiverse' >> sources.list
-    echo 'deb-src http://mirror.bit.edu.cn/ubuntu/ raring-updates main restricted universe multiverse' >> sources.list
-    echo 'deb-src http://mirror.bit.edu.cn/ubuntu/ raring-backports main restricted universe multiverse' >> sources.list
-    echo 'deb-src http://mirror.bit.edu.cn/ubuntu/ raring-proposed main restricted universe multiverse' >> sources.list
+    echo 'deb http://mirror.bit.edu.cn/ubuntu/ saucy main restricted universe multiverse' > sources.list
+    echo 'deb http://mirror.bit.edu.cn/ubuntu/ saucy-security main restricted universe multiverse' >> sources.list
+    echo 'deb http://mirror.bit.edu.cn/ubuntu/ saucy-updates main restricted universe multiverse' >> sources.list
+    echo 'deb http://mirror.bit.edu.cn/ubuntu/ saucy-backports main restricted universe multiverse' >> sources.list
+    echo 'deb http://mirror.bit.edu.cn/ubuntu/ saucy-proposed main restricted universe multiverse' >> sources.list
+    echo 'deb-src http://mirror.bit.edu.cn/ubuntu/ saucy main restricted universe multiverse' >> sources.list
+    echo 'deb-src http://mirror.bit.edu.cn/ubuntu/ saucy-security main restricted universe multiverse' >> sources.list
+    echo 'deb-src http://mirror.bit.edu.cn/ubuntu/ saucy-updates main restricted universe multiverse' >> sources.list
+    echo 'deb-src http://mirror.bit.edu.cn/ubuntu/ saucy-backports main restricted universe multiverse' >> sources.list
+    echo 'deb-src http://mirror.bit.edu.cn/ubuntu/ saucy-proposed main restricted universe multiverse' >> sources.list
 
     #ipv6-only
-    echo 'deb http://mirror.bit6.edu.cn/ubuntu/ raring main restricted universe multiverse' >> sources.list
-    echo 'deb http://mirror.bit6.edu.cn/ubuntu/ raring-security main restricted universe multiverse' >> sources.list
-    echo 'deb http://mirror.bit6.edu.cn/ubuntu/ raring-updates main restricted universe multiverse' >> sources.list
-    echo 'deb http://mirror.bit6.edu.cn/ubuntu/ raring-backports main restricted universe multiverse' >> sources.list
-    echo 'deb http://mirror.bit6.edu.cn/ubuntu/ raring-proposed main restricted universe multiverse' >> sources.list
-    echo 'deb-src http://mirror.bit6.edu.cn/ubuntu/ raring main restricted universe multiverse' >> sources.list
-    echo 'deb-src http://mirror.bit6.edu.cn/ubuntu/ raring-security main restricted universe multiverse' >> sources.list
-    echo 'deb-src http://mirror.bit6.edu.cn/ubuntu/ raring-updates main restricted universe multiverse' >> sources.list
-    echo 'deb-src http://mirror.bit6.edu.cn/ubuntu/ raring-backports main restricted universe multiverse' >> sources.list
-    echo 'deb-src http://mirror.bit6.edu.cn/ubuntu/ raring-proposed main restricted universe multiverse' >> sources.list
+    echo 'deb http://mirror.bit6.edu.cn/ubuntu/ saucy main restricted universe multiverse' >> sources.list
+    echo 'deb http://mirror.bit6.edu.cn/ubuntu/ saucy-security main restricted universe multiverse' >> sources.list
+    echo 'deb http://mirror.bit6.edu.cn/ubuntu/ saucy-updates main restricted universe multiverse' >> sources.list
+    echo 'deb http://mirror.bit6.edu.cn/ubuntu/ saucy-backports main restricted universe multiverse' >> sources.list
+    echo 'deb http://mirror.bit6.edu.cn/ubuntu/ saucy-proposed main restricted universe multiverse' >> sources.list
+    echo 'deb-src http://mirror.bit6.edu.cn/ubuntu/ saucy main restricted universe multiverse' >> sources.list
+    echo 'deb-src http://mirror.bit6.edu.cn/ubuntu/ saucy-security main restricted universe multiverse' >> sources.list
+    echo 'deb-src http://mirror.bit6.edu.cn/ubuntu/ saucy-updates main restricted universe multiverse' >> sources.list
+    echo 'deb-src http://mirror.bit6.edu.cn/ubuntu/ saucy-backports main restricted universe multiverse' >> sources.list
+    echo 'deb-src http://mirror.bit6.edu.cn/ubuntu/ saucy-proposed main restricted universe multiverse' >> sources.list
 }
 
 
