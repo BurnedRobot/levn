@@ -11,6 +11,7 @@
 #
 #   History:    
 #   2013/08/05  BurnedRobot  First release
+#   2013/11/17  BurnedRobot  Fix a bug in set_bit_sources
 #
 #############################################################################################
 
