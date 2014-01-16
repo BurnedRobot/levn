@@ -17,6 +17,7 @@
 #                            Add goagent, chromium
 #   2013/10/04  BurnedRobot  Add whether to change software sources or not
 #                            Fix bugs in install_goagent
+#   2014/01/16  BurnedRobot  Add hlsearch in .vimrc     #&1(A:Add,C:Change, D:Delete, M:Move)
 #
 #############################################################################################
 
@@ -50,6 +51,8 @@ function update_sources()
     fi
 
 }
+
+
 #function common_installation 
 #mostly app can be installed by this function
 function common_installation()
@@ -125,21 +128,75 @@ function clean
 function install_vim()
 {
     $AUTOINSTALL vim $PASSWD
-    echo set number > ~/.vimrc
-    echo colorscheme desert >> ~/.vimrc
-    echo set smartindent >> ~/.vimrc
-    echo set tabstop=4 >> ~/.vimrc
-    echo set shiftwidth=4 >> ~/.vimrc
-    echo set expandtab >> ~/.vimrc
-    echo hi Comment ctermfg=gray guifg=gray >> ~/.vimrc
-    echo hi Constant ctermfg=red guifg=red >> ~/.vimrc
-    echo hi PreProc ctermfg=green guifg=green >> ~/.vimrc
-    echo hi Statement ctermfg=blue guifg=blue >> ~/.vimrc
-    echo hi Type ctermfg=brown guifg=brown >> ~/.vimrc
-    echo hi Identifier ctermfg=yellow guifg=yellow >> ~/.vimrc
-    echo hi Special ctermfg=cyan guifg=cyan >> ~/.vimrc
+    echo 'set hlsearch' > ~/.vimrc                                    #&1A
+    echo 'set number' >> ~/.vimrc                                     #&1C
+    echo 'colorscheme desert' >> ~/.vimrc
+    echo 'set smartindent' >> ~/.vimrc
+    echo 'set tabstop=4' >> ~/.vimrc
+    echo 'set shiftwidth=4' >> ~/.vimrc
+    echo 'set expandtab' >> ~/.vimrc
+    echo 'set guifont=Monospace\ 13' >> ~/.vimrc                      #&1A
+    echo 'hi Comment ctermfg=gray guifg=gray' >> ~/.vimrc
+    echo 'hi Constant ctermfg=red guifg=red' >> ~/.vimrc
+    echo 'hi PreProc ctermfg=green guifg=green' >> ~/.vimrc
+    echo 'hi Statement ctermfg=blue guifg=blue' >> ~/.vimrc
+    echo 'hi Type ctermfg=brown guifg=brown' >> ~/.vimrc
+    echo 'hi Identifier ctermfg=yellow guifg=yellow' >> ~/.vimrc
+    echo 'hi Special ctermfg=cyan guifg=cyan' >> ~/.vimrc
     echo
+
+    install_vundle
 }
+
+
+#Here installs vim plugin manager - vundle                                                                   #&1A
+function install_vundle()                                                                                    #&1A
+{                                                                                                            #&1A
+    git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle                                      #&1A
+                                                                                                             #&1A
+    echo >> ~/.vimrc                                                                                         #&1A
+    echo 'set nocompatible              " be iMproved' >> ~/.vimrc                                           #&1A
+    echo 'filetype off                  " required!' >> ~/.vimrc                                             #&1A
+                                                                                                             #&1A
+    echo 'set rtp+=~/.vim/bundle/vundle/' >> ~/.vimrc                                                        #&1A
+    echo 'call vundle#rc()' >> ~/.vimrc                                                                      #&1A
+                                                                                                             #&1A
+    echo '" let Vundle manage Vundle' >> ~/.vimrc                                                            #&1A
+    echo '" required! ' >> ~/.vimrc                                                                          #&1A
+    echo "Bundle 'gmarik/vundle'" >> ~/.vimrc                                                                #&1A
+                                                                                                             #&1A
+    echo '" My bundles here:' >> ~/.vimrc                                                                    #&1A
+    echo '"' >> ~/.vimrc                                                                                     #&1A
+    echo '" original repos on GitHub' >> ~/.vimrc                                                            #&1A
+    echo "Bundle 'tpope/vim-fugitive'" >> ~/.vimrc                                                           #&1A
+    echo "Bundle 'Lokaltog/vim-easymotion'" >> ~/.vimrc                                                      #&1A
+    echo "Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}" >> ~/.vimrc                                            #&1A
+    echo "Bundle 'tpope/vim-rails.git'" >> ~/.vimrc                                                          #&1A
+    echo '" vim-scripts repos' >> ~/.vimrc                                                                   #&1A
+    echo "Bundle 'L9'" >> ~/.vimrc                                                                           #&1A
+    echo "Bundle 'FuzzyFinder'" >> ~/.vimrc                                                                  #&1A
+    echo '" non-GitHub repos' >> ~/.vimrc                                                                    #&1A
+    echo "Bundle 'git://git.wincent.com/command-t.git'" >> ~/.vimrc                                          #&1A
+    echo '" Git repos on your local machine (i.e. when working on your own plugin)' >> ~/.vimrc              #&1A
+    echo "Bundle 'file:///Users/gmarik/path/to/plugin'" >> ~/.vimrc                                          #&1A
+    echo '" taglist-plus' >> ~/.vimrc                                                                        #&1A
+    echo "Bundle 'taglist-plus'" >> ~/.vimrc                                                                 #&1A
+    echo '" ...' >> ~/.vimrc                                                                                 #&1A
+                                                                                                             #&1A
+    echo 'filetype plugin indent on     " required!' >> ~/.vimrc                                             #&1A
+    echo '"' >> ~/.vimrc                                                                                     #&1A
+    echo '" Brief help' >> ~/.vimrc                                                                          #&1A
+    echo '" :BundleList          - list configured bundles' >> ~/.vimrc                                      #&1A
+    echo '" :BundleInstall(!)    - install (update) bundles' >> ~/.vimrc                                     #&1A
+    echo '" :BundleSearch(!) foo - search (or refresh cache first) for foo' >> ~/.vimrc                      #&1A
+    echo '" :BundleClean(!)      - confirm (or auto-approve) removal of unused bundles' >> ~/.vimrc          #&1A
+    echo '"' >> ~/.vimrc                                                                                     #&1A
+    echo '" see :h vundle for more details or wiki for FAQ' >> ~/.vimrc                                      #&1A
+    echo '" NOTE: comments after Bundle commands are not allowed.' >> ~/.vimrc                               #&1A
+                                                                                                             #&1A
+    vim +BundleInstall +qall                                                                                 #&1A
+                                                                                                             #&1A
+}                                                                                                            #&1A
 
 
 #Here installs openssh
@@ -302,11 +359,12 @@ function main()
 function this_test()
 {
     init
-    install_goagent
+    #install_goagent
+    install_vim
     clean
 }
 
 
 ##################################################################################################################################################
-main
-#this_test
+#main
+this_test
