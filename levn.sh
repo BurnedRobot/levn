@@ -133,6 +133,12 @@ function install_vim()
     cp ./vimrc ~/.vimrc                                                                                      #&2A
                                             
     install_vundle
+
+    tar -xf tags.tar
+
+    rm -rf ~/.vim/tags
+
+    mv ./tags ~/.vim/
 }
 
 

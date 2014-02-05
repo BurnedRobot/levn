@@ -73,6 +73,7 @@ let OmniCpp_DefaultNamespaces = ["std", "__GLIBCXX_STD"]
 " autoclose complete window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 set completeopt=menuone,menu,longest
+map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 Bundle 'OmniTags'
 " python
