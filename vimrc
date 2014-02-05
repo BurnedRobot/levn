@@ -48,6 +48,7 @@ filetype plugin indent on     " required!
 " see :h vundle for more details or wiki for FAQ
 " NOTE: comments after Bundle commands are not allowed.
 
+
 " My vim config
 " taglist-plus
 Bundle 'taglist-plus'
@@ -57,14 +58,42 @@ let Tlist_Show_One_File=1
 let Tlist_Use_Right_Window=1
 
 Bundle 'cscope.vim'
+
 " OmniCppComplete
 Bundle 'OmniCppComplete'
+set tags+=~/.vim/tags/cpp
+let OmniCpp_NamespaceSearch = 1
+let OmniCpp_GlobalScopeSearch = 1
+let OmniCpp_ShowAccess = 1
+let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
+let OmniCpp_MayCompleteDot = 1 " autocomplete after .
+let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
+let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
+let OmniCpp_DefaultNamespaces = ["std", "__GLIBCXX_STD"]
+" autoclose complete window
+au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+set completeopt=menuone,menu,longest
+
 Bundle 'OmniTags'
 " python
 Bundle 'Python-3.x-Standard-Library-Reference'
-Bundle 'pythoncomplete'
 
 Bundle 'scrooloose/nerdtree'
 let NERDTreeWinSize=20
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
 autocmd vimenter * NERDTree
+
+set nocp
+filetype plugin on
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType python3 set omnifunc=python3complete#Complete
+" autocmd FileType cpp set omnifunc=CppComplete#Complete
+
+"parentese, brackets, braces, quotes complete
+inoremap ( ()<LEFT>
+inoremap [ []<LEFT>
+inoremap { {}<LEFT>
+inoremap < <><LEFT>
+inoremap " ""<LEFT>
+inoremap ' ''<LEFT>
+
