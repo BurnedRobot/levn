@@ -19,6 +19,7 @@
 #                            Fix bugs in install_goagent
 #   2014/01/16  BurnedRobot  Add hlsearch in .vimrc                         #&1(A:Add,C:Change, D:Delete, M:Move)
 #   2014/02/05  BurnedRobot  move all the .vimrc setting into vimrc file.   #&2(A:Add,C:Change, D:Delete, M:Move)
+#   2014/02/07  BurnedRobot  Add install_emacs                              #&3(A:Add,C:Change, D:Delete, M:Move)
 #
 #############################################################################################
 
@@ -274,6 +275,16 @@ function install_goagent()
 }
 
 
+#Here install emacs editor
+function install_emacs()                                                                                     #&3A
+{                                                                                                            #&3A
+    $AUTOINSTALL emacs24 $PASSWD                                                                             #&3A
+    rm -rf ~/.emacs.d                                                                                        #&3A 
+    git clone https://github.com/redguardtoo/emacs.d.git                                                     #&3A
+    mv emacs.d ~/.emacs.d                                                                                    #&3A
+    http_proxy=http://127.0.0.1:8087 emacs &                                                                 #&3A
+                                                                                                             #&3A
+}                                                                                                            #&3A
 ##################################################################################################################################################
 #main function
 function main()
@@ -306,6 +317,9 @@ function main()
     #Here installs goagent
     #install_goagent
 
+    #Here installs emacs
+    install_emacs
+
     clean
 }
 
@@ -314,11 +328,12 @@ function this_test()
 {
     init
     #install_goagent
-    install_vim
+    #install_vim
+    install_emacs
     clean
 }
 
 
 ##################################################################################################################################################
-#main
-this_test
+main
+#this_test
