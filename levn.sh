@@ -1,6 +1,6 @@
 #############################################################################################
 #
-#   This script is used to initialize my linux work environment automately. All the setting 
+#   This script is used to initialize my linux work environment automately. All the setting
 # is just for my need.
 #
 #   Version:    1.0
@@ -8,7 +8,7 @@
 #   Email:      robotflying777@gmail.com
 #   Copyright:  BurnedRobot
 #
-#   History:    
+#   History:
 #   2013/06/03  BurnedRobot  First release
 #   2013/06/15  BurnedRobot  Use 'expect' tool to implement AUTOINSTALLation
 #   2013/07/12  BurnedRobot  Add wget,git,goagent,curl
@@ -55,7 +55,7 @@ function update_sources()
 }
 
 
-#function common_installation 
+#function common_installation
 #mostly app can be installed by this function
 function common_installation()
 {
@@ -97,10 +97,10 @@ function init()
     if [ "$SOURCE_CHECK" == 'y' ] || [ "$SOURCE_CHECK" == 'Y' ];
         then update_sources
     elif [ "$SOURCE_CHECK" == 'n' ] || [ "$SOURCE_CHECK" == 'N' ];
-        then echo Software sources dosen\`t change! 
+        then echo "Software sources dosen\`t change!"
     else
-        echo Input Error!
-        echo Exit!
+        echo "Input Error!"
+        echo "Exit!"
         exit
     fi
 
@@ -132,7 +132,7 @@ function install_vim()
     $AUTOINSTALL vim $PASSWD
                                                                                                              #&2D
     cp ./vimrc ~/.vimrc                                                                                      #&2A
-                                            
+
     install_vundle
 
     tar -xf tags.tar
@@ -235,7 +235,7 @@ function judge_desktop()
 }
 
 
-#Here installs goagent 
+#Here installs goagent
 function install_goagent()
 {
     if [ "$SYSTEM" == 'Ubuntu' ];
@@ -258,14 +258,14 @@ function install_goagent()
     tar zxvf openssl-1.0.1c.tar.gz
     cd openssl-1.0.1c
 #设定Openssl 安装，( --prefix )参数为欲安装之目录，也就是安装后的档案会出现在该目录下
-    ./config --prefix=/root/openssl 
+    ./config --prefix=/root/openssl
     make && make install
 
     #install pyopenssl
     wget http://pypi.python.org/packages/source/p/pyOpenSSL/pyOpenSSL-0.13.tar.gz && tar zxvf pyOpenSSL-0.13.tar.gz && cd pyOpenSSL-0.13 && sudo python setup.py install
 
     judge_desktop
-    
+
     cd ~/Desktop
     git clone https://github.com/goagent/goagent.git
 
@@ -279,10 +279,11 @@ function install_goagent()
 function install_emacs()                                                                                     #&3A
 {                                                                                                            #&3A
     $AUTOINSTALL emacs24 $PASSWD                                                                             #&3A
-    rm -rf ~/.emacs.d                                                                                        #&3A 
+    rm -rf ~/.emacs.d                                                                                        #&3A
     git clone https://github.com/redguardtoo/emacs.d.git                                                     #&3A
     mv emacs.d ~/.emacs.d                                                                                    #&3A
     http_proxy=http://127.0.0.1:8087 emacs &                                                                 #&3A
+    mv bashrc ~/.bashrc                                                                                      #&3A
                                                                                                              #&3A
 }                                                                                                            #&3A
 ##################################################################################################################################################
