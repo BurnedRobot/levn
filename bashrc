@@ -126,5 +126,4 @@ em ()
 emw ()
 {
     http_proxy=http://127.0.0.1:8087 LC_CTYPE=zh_CN.UTF-8 emacs "$@";
-
 }
