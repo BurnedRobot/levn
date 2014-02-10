@@ -279,6 +279,7 @@ function install_goagent()
 function install_emacs()                                                                                     #&3A
 {                                                                                                            #&3A
     $AUTOINSTALL emacs24 $PASSWD                                                                             #&3A
+    $AUTOINSTALL clang-3.4 $PASSWD                                                                           #&3A
     rm -rf ~/.emacs.d                                                                                        #&3A
     git clone https://github.com/redguardtoo/emacs.d.git                                                     #&3A
     mv emacs.d ~/.emacs.d                                                                                    #&3A
