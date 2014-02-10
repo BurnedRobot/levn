@@ -283,7 +283,7 @@ function install_emacs()                                                        
     git clone https://github.com/redguardtoo/emacs.d.git                                                     #&3A
     mv emacs.d ~/.emacs.d                                                                                    #&3A
     http_proxy=http://127.0.0.1:8087 emacs &                                                                 #&3A
-    mv bashrc ~/.bashrc                                                                                      #&3A
+    cp bashrc ~/.bashrc                                                                                      #&3A
                                                                                                              #&3A
 }                                                                                                            #&3A
 ##################################################################################################################################################
