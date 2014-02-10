@@ -53,7 +53,7 @@ filetype plugin indent on     " required!
 " taglist-plus
 Bundle 'taglist-plus'
 " auto taglist-plus on
-let Tlist_Auto_Open=1
+let Tlist_Auto_Open=0
 let Tlist_Show_One_File=1
 let Tlist_Use_Right_Window=1
 
@@ -80,9 +80,9 @@ Bundle 'OmniTags'
 Bundle 'Python-3.x-Standard-Library-Reference'
 
 Bundle 'scrooloose/nerdtree'
-let NERDTreeWinSize=20
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
-autocmd vimenter * NERDTree
+"let NERDTreeWinSize=20
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
+"autocmd vimenter * NERDTree
 
 set nocp
 filetype plugin on
