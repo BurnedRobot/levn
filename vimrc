@@ -89,3 +89,4 @@ filetype plugin on
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType python3 set omnifunc=python3complete#Complete
 " autocmd FileType cpp set omnifunc=CppComplete#Complete
+set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
