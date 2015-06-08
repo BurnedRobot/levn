@@ -151,6 +151,10 @@ These tools are *OPTIONAL*. Please ignore any related error message. For example
 *** syntaxerl
 - syntax check [[http://www.erlang.org/][Erlang]] through flymake
 - Install from [[https://github.com/ten0s/syntaxerl]]
+*** jedi & service_factory
+- Python 3rd party packages installed through `pip install jedi service_factory`
+- Required by anaconda-mode which provides Python intellisense
+- If you feel anaconda-mode make Emacs *less responsive*, disable it by remove line `(anaconda-mode)` in init-python-mode.el
 * Tutorial (OPTIONAL)
 ** Basic tutorial
 *** Step 1, learn OS basics
@@ -211,19 +215,20 @@ You need set up the directories to seach C++ header files. Please see the sectio
 ** Use Emacs on Windows?
 I strongly suggest [[http://www.cygwin.com/][Cygwin]]. But the setup is still usable in native windows version if you set up *environment variable HOME*.
 ** Yasnippet key bindings
-By default, yasnippet is *NOT* loaded because it takes too much Emacs startup time.
+Instead of "M-x yas-expand", you can use hotkey "C-c k" globally and "M-j" in evil-insert-mode.
 
-Instead of "M-x yas-expand", you can use my wrapper "M-x my-yas-expand" whose hotkey is "C-c k" globally and "M-j" in evil-insert-mode.
+I don't suggest use default TAB key to expand snippet because TAB keys is used by other plugins
 
-If you prefer loading yasnippet at startup, insert below lines anywhere (~/.emacs.d/init.el, ~/.custom.el, ... etc):
-#+begin_src elisp
-(require 'yasnippet)
-(yas-global-mode 1)
-#+end_src
 ** [[http://melpa.org][MELPA]] does not include the package?
 If a package is not installable through MELPA, you can place its source code at "~/.emacs.d/site-lisp" instead. There are already some samples there.
 ** Non-English users?
 Please make sure your locale is *UTF-8 compatible*. For example, if I type `locale` in shell, I will get the  output "zh_CN.UTF-8". If and only if you see the "UTF-8", your locale is correct.
+** Behind Corperate firewall?
+In shell, input below commmand:
+#+begin_src bash
+http_proxy=http://yourname:passwd@proxy.company.com:8080 emacs -nw
+#+end_src
+
 ** Your government blocks the internet?
 People in China, North Korea, Cuba, Iran need [[http://code.google.com/p/goagent/][goagent]] to download packages. Run command "http_proxy=http://127.0.0.1:8087 emacs -nw" in shell after starting goagent server.
 ** Email setup?
@@ -299,7 +304,7 @@ By default, the word files path is at "~/.eim/py.txt". I place it out of the ema
 
 The path can be changed in init-eim.el.
 
-A sample py.txt can be downloaded [[https://gist.githubusercontent.com/redguardtoo/8dae2cd040996089cd61/raw/69f29362fdf880b8428012a4b5057d8dc6f5fc70/py.txt][HERE]].
+A sample file can be downloaded [[https://github.com/tumashu/chinese-pyim-bigdict/raw/gh-pages/pyim-bigdict.pyim][HERE]]. After downloading, rename it to py.txt.
 ** Install Emacs at home directory
 Run below commands:
 #+begin_src sh

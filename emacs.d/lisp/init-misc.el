@@ -29,6 +29,33 @@
  (add-to-list 'auto-mode-alist '("\\.gradle\\'" . groovy-mode))
 ;; }}
 
+;; {{ https://github.com/browse-kill-ring/browse-kill-ring
+(require 'browse-kill-ring)
+;; no duplicates
+(setq browse-kill-ring-display-duplicates nil)
+;; preview is annoying
+(setq browse-kill-ring-show-preview nil)
+(browse-kill-ring-default-keybindings)
+;; hotkeys:
+;; n/p => next/previous
+;; s/r => search
+;; l => filter with regex
+;; g => update/refresh
+;; }}
+
+;; {{ gradle
+(defun my-run-gradle-in-shell (cmd)
+  (interactive "sEnter a string:")
+  (let ((old-dir default-directory)
+        (root-dir (locate-dominating-file default-directory
+                                          "build.gradle")))
+    (message "root-dir=%s cmd=%s" root-dir cmd)
+    (when root-dir
+      (cd root-dir)
+      (shell-command (concat "gradle " cmd "&"))
+      (cd old-dir))))
+;; }}
+
 ;; {{ crontab
 ;; in shell "EDITOR='emacs -nw' crontab -e" to edit cron job
 (add-to-list 'auto-mode-alist '("crontab.*\\'" . crontab-mode))
@@ -43,7 +70,7 @@
   (interactive)
   (switch-to-buffer nil))
 
-(defun my-lookup-dictionary ()
+(defun my-lookup-dict-org ()
   (interactive)
   (dictionary-new-search (cons (if (region-active-p)
                                    (buffer-substring-no-properties (region-beginning) (region-end))
@@ -128,21 +155,22 @@
   (define-key global-map (kbd "C-M-@") 'er/contract-region))
 ;; }}
 
-(add-hook 'prog-mode-hook
-          '(lambda ()
-             (unless (is-buffer-file-temp)
-               ;; highlight FIXME/BUG/TODO in comment
-               (require 'fic-mode)
-               (fic-mode 1)
-               ;; enable for all programming modes
-               ;; http://emacsredux.com/blog/2013/04/21/camelcase-aware-editing/
-               (subword-mode)
-               (electric-pair-mode 1)
-               ;; eldoc, show API doc in minibuffer echo area
-               (turn-on-eldoc-mode)
-               ;; show trailing spaces in a programming mod
-               (setq show-trailing-whitespace t)
-               )))
+(defun generic-prog-mode-hook-setup ()
+  (unless (is-buffer-file-temp)
+	;; highlight FIXME/BUG/TODO in comment
+	(require 'fic-mode)
+	(fic-mode 1)
+	;; enable for all programming modes
+	;; http://emacsredux.com/blog/2013/04/21/camelcase-aware-editing/
+	(subword-mode)
+	(electric-pair-mode 1)
+	;; eldoc, show API doc in minibuffer echo area
+	(turn-on-eldoc-mode)
+	;; show trailing spaces in a programming mod
+	(setq show-trailing-whitespace t)
+	))
+
+(add-hook 'prog-mode-hook 'generic-prog-mode-hook-setup)
 
 ;; turns on auto-fill-mode, don't use text-mode-hook because for some
 ;; mode (org-mode for example), this will make the exported document
