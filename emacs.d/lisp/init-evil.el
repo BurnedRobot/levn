@@ -156,9 +156,8 @@
 (define-key evil-visual-state-map (kbd "v") 'er/expand-region)
 (define-key evil-insert-state-map (kbd "C-e") 'move-end-of-line)
 (define-key evil-insert-state-map (kbd "C-k") 'kill-line)
-(define-key evil-insert-state-map (kbd "TAB") 'my-yas-expand)
-(define-key evil-insert-state-map (kbd "M-j") 'my-yas-expand)
-(define-key evil-emacs-state-map (kbd "M-j") 'my-yas-expand)
+(define-key evil-insert-state-map (kbd "M-j") 'yas-expand)
+(define-key evil-emacs-state-map (kbd "M-j") 'yas-expand)
 (global-set-key (kbd "C-r") 'undo-tree-redo)
 
 ;; My frequently used commands are listed here
@@ -172,9 +171,11 @@
   "bu" 'backward-up-list
   "bb" 'back-to-previous-buffer
   "ef" 'end-of-defun
-  "db" 'sdcv-search-pointer ; in buffer
-  "dt" 'sdcv-search-input+ ;; in tip
-  "dd" 'my-lookup-dictionary
+  "ddb" 'sdcv-search-pointer ; in buffer
+  "ddt" 'sdcv-search-input+ ;; in tip
+  "ddd" 'my-lookup-dict-org
+  "ddw" 'define-word
+  "ddp" 'define-word-at-point
   "mf" 'mark-defun
   "em" 'erase-message-buffer
   "eb" 'eval-buffer
@@ -320,6 +321,7 @@
   ;; "opt" is occupied by my-open-project-todo
   ;; recommended in html
   "md" 'mc/mark-all-like-this-dwim
+  "otl" 'org-toggle-link-display
   "oc" 'occur
   "om" 'toggle-org-or-message-mode
   "ut" 'undo-tree-visualize
@@ -344,7 +346,6 @@
   "9" 'select-window-9
   "xm" 'smex
   "mx" 'helm-M-x
-  "md" 'my-open-project-todo
   "xx" 'er/expand-region
   "xf" 'ido-find-file
   "xb" 'ido-switch-buffer
