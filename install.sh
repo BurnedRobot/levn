@@ -5,11 +5,14 @@ LUA_INSTALLER='luarocks install'
 LEVN_DIR=$(pwd)
 CONFIG_FILES_DIR=$LEVN_DIR/config_files
 
+ZSH=~/.oh-my-zsh
+OH_MY_ZSH=$LEVN_DIR/oh_my_zsh
+
 # copy $XDG_CONFIG_PATH
 function copy_config_dir()
 {
     echo "Here copying common configure files..."
-    rm -r ~/.config
+    [ -d ~/.config ] && rm -r ~/.config
     cp -r $CONFIG_FILES_DIR/common_config/ ~/.config
 }
 
@@ -48,6 +51,11 @@ function install_common_applications()
         "xorg-xrandr"
         "xorg-xmodmap"
 
+        "zsh"
+        "git"
+
+        "emacs-nox"
+
         # font
         "ttf-inconsolata"
         
@@ -63,11 +71,20 @@ function install_common_applications()
     done
 }
 
+# configure oh_my_zsh
+function configure_oh_my_zsh()
+{
+    [ -d $ZSH ] && rm -r $ZSH
+    cp -r $OH_MY_ZSH $ZSH
+    bash +x $OH_MY_ZSH/tools/install.sh
+}
+
 function install()
 {
     install_common_applications
     install_lua_libraries
     copy_configuration_files
+    configure_oh_my_zsh
 }
 
 install
