@@ -8,6 +8,9 @@ CONFIG_FILES_DIR=$LEVN_DIR/config_files
 ZSH=~/.oh-my-zsh
 OH_MY_ZSH=$LEVN_DIR/oh_my_zsh
 
+EMACS=~/.emacs.d
+EMACS_CONFIG=$LEVN_DIR/emacs.d
+
 # copy $XDG_CONFIG_PATH
 function copy_config_dir()
 {
@@ -79,12 +82,20 @@ function configure_oh_my_zsh()
     bash +x $OH_MY_ZSH/tools/install.sh
 }
 
+# configure emacs
+function configure_emacs()
+{
+    [ -d $EMACS ] && rm -r $EMACS
+    cp -r $EMACS_CONFIG $EMACS
+}
+
 function install()
 {
     install_common_applications
     install_lua_libraries
     copy_configuration_files
     configure_oh_my_zsh
+    configure_emacs
 }
 
 install

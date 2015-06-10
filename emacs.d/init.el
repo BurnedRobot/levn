@@ -118,6 +118,9 @@
 (require 'init-color-theme)
 (require 'init-emacs-w3m)
 
+; neotree plugin
+(require 'init-neotree)
+
 ;; {{ idle require other stuff
 (setq idle-require-idle-delay 3)
 (setq idle-require-symbols '(init-misc-lazy
@@ -166,3 +169,15 @@
 ;;; no-byte-compile: t
 ;;; End:
 (put 'erase-buffer 'disabled nil)
+
+;;; Set selection highlight color
+(global-hl-line-mode 1)
+(set-face-background 'hl-line  nil)
+(set-face-foreground 'highlight nil)
+(set-face-attribute 'region nil
+                    :background "#988989"
+                    :foreground "#61ad25")
+(require 'fill-column-indicator)
+(define-globalized-minor-mode global-fci-mode
+  fci-mode (lambda () (fci-mode 1)))
+(global-fci-mode 1)

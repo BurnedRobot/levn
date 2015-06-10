@@ -130,6 +130,8 @@ ARCHIVE is the string name of the package archive.")
     company-c-headers
     company-anaconda
     anaconda-mode
+    ;; neotree
+    neotree
     ;; make all the color theme packages available
     afternoon-theme
     define-word
@@ -308,5 +310,7 @@ ARCHIVE is the string name of the package archive.")
 (require-package 'quack) ;; for scheme
 
 ;; (require-package 'command-frequency)
+
+(require-package 'neotree) ;; for neotree
 
 (provide 'init-elpa)
