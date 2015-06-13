@@ -104,7 +104,7 @@ function configure_emacs()
 function setup_go()
 {
     sudo $INSTALLER go
-    mkdir -p $GOPATH/bin/ $GOPATH/src/ $GOPATH/pkg/ $GOPROJECT
+    mkdir -p $GOPATH/bin/ $GOPATH/src/ $GOPATH/pkg/ $GOPROJECT/bin/ $GOPROJECT/src/ $GOPROJECT/pkg/
     sed -i '/export GOPATH=/d' ~/.zshrc
     sed -i '/export PATH=$PATH:${GOPATH\/\/:\/\/bin:}\/bin/d' ~/.zshrc 
     echo "export GOPATH=$GOPATH:$GOPROJECT" >> ~/.zshrc 
@@ -113,11 +113,11 @@ function setup_go()
 
 function install()
 {
-    # install_common_applications
-    # install_lua_libraries
-    # copy_configuration_files
-    # configure_oh_my_zsh
-    # configure_emacs
+    install_common_applications
+    install_lua_libraries
+    copy_configuration_files
+    configure_oh_my_zsh
+    configure_emacs
     setup_go
 }
 
