@@ -1,15 +1,25 @@
 #! /bin/bash
 
 INSTALLER="pacman -S --noconfirm"
-LUA_INSTALLER='luarocks install'
+
 LEVN_DIR=$(pwd)
 CONFIG_FILES_DIR=$LEVN_DIR/config_files
 
+# lua
+LUA_INSTALLER='luarocks install'
+
+# zsh
 ZSH=~/.oh-my-zsh
 OH_MY_ZSH=$LEVN_DIR/oh_my_zsh
 
+# emacs
 EMACS=~/.emacs.d
 EMACS_CONFIG=$LEVN_DIR/emacs.d
+
+# go
+GOHOME=~/development/go
+GOPATH=$GOHOME/gopath
+GOPROJECT=$GOHOME/goproject
 
 # copy $XDG_CONFIG_PATH
 function copy_config_dir()
@@ -65,6 +75,7 @@ function install_common_applications()
         "terminator"
         "tmux"
 		"luarocks"
+
     )
 
     for i in ${common_apps_list[@]}
@@ -89,13 +100,25 @@ function configure_emacs()
     cp -r $EMACS_CONFIG $EMACS
 }
 
+# set up go environment
+function setup_go()
+{
+    sudo $INSTALLER go
+    mkdir -p $GOPATH/bin/ $GOPATH/src/ $GOPATH/pkg/ $GOPROJECT
+    sed -i '/export GOPATH=/d' ~/.zshrc
+    sed -i '/export PATH=$PATH:${GOPATH\/\/:\/\/bin:}\/bin/d' ~/.zshrc 
+    echo "export GOPATH=$GOPATH:$GOPROJECT" >> ~/.zshrc 
+    echo 'export PATH=$PATH:${GOPATH//://bin:}/bin' >> ~/.zshrc 
+}
+
 function install()
 {
-    install_common_applications
-    install_lua_libraries
-    copy_configuration_files
-    configure_oh_my_zsh
-    configure_emacs
+    # install_common_applications
+    # install_lua_libraries
+    # copy_configuration_files
+    # configure_oh_my_zsh
+    # configure_emacs
+    setup_go
 }
 
 install
